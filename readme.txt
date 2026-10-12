@@ -16,8 +16,8 @@ A one-click upsell on the order-received page -- the original order is always ve
 
 HDWebmobile Post-Purchase Upsell shows one extra product, at a discount, on the order-received page right after checkout. Accepting it creates a brand new, separate order for just that item, with its own payment link -- nothing is added to or recharged on the original order.
 
-= Why this plugin exists =
-A competing post-purchase upsell plugin's "accept this upsell" endpoint took the original order id straight from the request and trusted it to determine whose order (and billing/shipping address) the upsell attached to, without ever verifying the requester actually owned that order (CWE-639, Authorization Bypass Through User-Controlled Key -- an IDOR). Anyone able to guess or increment an order id could attach an upsell order to a stranger's order, and in doing so read back that stranger's billing and shipping address.
+= Security by design =
+A common weakness in post-purchase upsell tools is an "accept this upsell" endpoint that takes the original order id straight from the request and trusts it to determine whose order (and billing/shipping address) the upsell attaches to, without ever verifying the requester actually owns that order (CWE-639, Authorization Bypass Through User-Controlled Key -- an IDOR). Anyone able to guess or increment an order id could attach an upsell order to a stranger's order, and in doing so read back that stranger's billing and shipping address.
 
 This plugin resolves the original order exactly the way WooCommerce's own guest-order lookup does:
 
