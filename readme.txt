@@ -34,6 +34,9 @@ This plugin resolves the original order exactly the way WooCommerce's own guest-
 * One global offer, not per-product upselling
 * No automatic payment/recharge -- the customer completes a normal (short) checkout for the new order
 
+= Enjoying this plugin? =
+If it helps your site, please consider [leaving an honest review on WordPress.org](https://wordpress.org/support/plugin/hdwebmobile-post-purchase-upsell/reviews/#new-post) -- it helps other WordPress users find it. Found a problem or have an idea? Please [open a support topic](https://wordpress.org/support/plugin/hdwebmobile-post-purchase-upsell/) first so it can be fixed.
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/hdwebmobile-post-purchase-upsell` directory, or install the plugin through the WordPress plugins screen directly.
