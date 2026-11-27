@@ -12,7 +12,7 @@ Shows one extra product, at a discount, on the order-received page right after c
 
 ## Why this plugin exists
 
-A competing post-purchase upsell plugin's "accept this upsell" endpoint took the original order id straight from the request and trusted it to determine whose order (and billing/shipping address) the upsell attached to, without ever verifying the requester actually owned that order (CWE-639, Authorization Bypass Through User-Controlled Key -- an IDOR). Anyone able to guess or increment an order id could attach an upsell order to a stranger's order, and in doing so read back that stranger's billing and shipping address.
+A common flaw in post-purchase upsell plugins: an "accept this upsell" endpoint that takes the original order id from the request and trusts it to determine whose order (and billing/shipping address) the upsell attaches to, without verifying the requester owns that order (CWE-639, Authorization Bypass Through User-Controlled Key -- an IDOR). Anyone able to guess or increment an order id could attach an upsell to a stranger's order and read back that stranger's billing and shipping address.
 
 This plugin resolves the original order exactly the way WooCommerce's own guest-order lookup does:
 

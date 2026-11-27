@@ -9,13 +9,11 @@ if (!defined('ABSPATH')) {
 /**
  * Settings, order-ownership verification, and the only place an upsell order is ever created.
  *
- * A competing post-purchase upsell plugin's "accept this upsell" endpoint took the original
- * order id straight from the request and trusted it to determine whose order the upsell (and
- * its billing/shipping address) attached to, without ever verifying the requester actually
- * owned that order (CWE-639, Authorization Bypass Through User-Controlled Key -- an IDOR).
- * Anyone able to guess or increment an order id could attach an upsell order to a stranger's
- * order, and in doing so read back that stranger's billing/shipping address from the created
- * order.
+ * The risk this guards against (CWE-639, Authorization Bypass Through User-Controlled Key --
+ * an IDOR): an "accept this upsell" endpoint that takes the original order id from the request
+ * and trusts it to decide whose order the upsell (and its billing/shipping address) attaches
+ * to, without verifying the requester owns that order. Anyone able to guess an order id could
+ * attach an upsell to a stranger's order and read back that stranger's address.
  *
  * This plugin resolves the original order the exact same way WooCommerce's own guest-order
  * lookup does (confirmed by reading `includes/shortcodes/class-wc-shortcode-checkout.php`):
